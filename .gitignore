@@ -1,0 +1,48 @@
+# Build
+bin/
+obj/
+
+# VS / Rider / tooling
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Cache
+*.cache
+*.dbmdl
+*.dbtcache.v2
+*.futdcache.v2
+
+# Resharper / analyzers
+_ReSharper*/
+*.DotSettings.user
+
+# Rider
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Publish
+publish/
+*.pubxml
+*.pubxml.user
+
+# Secrets / local config
+appsettings.Development.json
+appsettings.Local.json
+*.secret.json
+
+# EF Core
+Migrations/obj/
