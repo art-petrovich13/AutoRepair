@@ -43,7 +43,7 @@ export default function Services() {
           <p className="text-gray-500 text-sm mt-1">{services.length} услуг</p>
         </div>
         <button onClick={openCreate}
-          className="bg-brand-500 hover:bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          className="bg-brand-500 hover:bg-brand-600 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors">
           + Добавить услугу
         </button>
       </div>
@@ -54,7 +54,7 @@ export default function Services() {
             <div className="flex items-start justify-between mb-2">
               <h3 className="font-semibold text-gray-800 text-sm leading-tight">{s.name}</h3>
               <span className="ml-2 text-brand-600 font-bold text-sm whitespace-nowrap">
-                {s.price.toLocaleString('ru-RU')} ₽
+                {s.price.toLocaleString('ru-RU')} б.р.
               </span>
             </div>
             {s.description && <p className="text-xs text-gray-500 mb-3">{s.description}</p>}
@@ -93,7 +93,7 @@ export default function Services() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-sm text-gray-600 mb-1">Цена (₽) *</label>
+                <label className="block text-sm text-gray-600 mb-1">Цена (б.р.) *</label>
                 <input type="number" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
                   value={form.price} onChange={e => setForm(p => ({ ...p, price: e.target.value }))} />
               </div>

@@ -67,7 +67,7 @@ export default function Reports() {
       'Мастер':     r.employee,
       'Статус':     STATUS_RU[r.status] ?? r.status,
       'Дата':       new Date(r.createdAt).toLocaleDateString('ru-RU'),
-      'Сумма (₽)':  r.totalAmount,
+      'Сумма (б.р.)':  r.totalAmount,
     })))
 
     ws['!cols'] = [8, 20, 16, 14, 20, 12, 12, 12].map(w => ({ wch: w }))
@@ -80,7 +80,7 @@ export default function Reports() {
       ['Всего заказов',    overview?.totalOrders ?? 0],
       ['Активных',         overview?.activeOrders ?? 0],
       ['Клиентов',         overview?.totalClients ?? 0],
-      ['Выручка (₽)',      overview?.totalRevenue ?? 0],
+      ['Выручка (б.р.)',      overview?.totalRevenue ?? 0],
     ])
     XLSX.utils.book_append_sheet(wb, summary, 'Сводка')
 
@@ -109,7 +109,7 @@ export default function Reports() {
           r.employee,
           STATUS_RU[r.status] ?? r.status,
           new Date(r.createdAt).toLocaleDateString('ru-RU'),
-          `${r.totalAmount.toLocaleString('ru-RU')} ₽`
+          `${r.totalAmount.toLocaleString('ru-RU')} б.р.`
         ].map(text =>
           new TableCell({
             children: [new Paragraph({ children: [new TextRun({ text, size: 20 })] })],
@@ -137,7 +137,7 @@ export default function Reports() {
           new Paragraph({ children: [new TextRun({ text: `Активных: ${overview?.activeOrders ?? 0}`, size: 22 })] }),
           new Paragraph({ children: [new TextRun({ text: `Клиентов: ${overview?.totalClients ?? 0}`, size: 22 })] }),
           new Paragraph({
-            children: [new TextRun({ text: `Выручка: ${overview?.totalRevenue?.toLocaleString('ru-RU') ?? 0} ₽`, size: 22 })],
+            children: [new TextRun({ text: `Выручка: ${overview?.totalRevenue?.toLocaleString('ru-RU') ?? 0} б.р.`, size: 22 })],
             spacing: { after: 300 }
           }),
           new Paragraph({ text: 'Список заказов', heading: HeadingLevel.HEADING_2, spacing: { after: 200 } }),
@@ -186,7 +186,7 @@ export default function Reports() {
           { label: 'Всего заказов',    val: overview?.totalOrders,   icon: '📋', color: 'text-slate-700' },
           { label: 'Активных заказов', val: overview?.activeOrders,  icon: '⚙️', color: 'text-blue-600' },
           { label: 'Клиентов',         val: overview?.totalClients,  icon: '👥', color: 'text-purple-600' },
-          { label: 'Выручка (₽)',      val: overview ? `${overview.totalRevenue.toLocaleString('ru-RU')}` : '—', icon: '💰', color: 'text-emerald-600' },
+          { label: 'Выручка (б.р.)',      val: overview ? `${overview.totalRevenue.toLocaleString('ru-RU')}` : '—', icon: '💰', color: 'text-emerald-600' },
         ].map(({ label, val, icon, color }) => (
           <div key={label} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
             <div className="flex items-center justify-between mb-3">
@@ -207,7 +207,7 @@ export default function Reports() {
             <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
             <YAxis tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false}
                    tickFormatter={v => `${(v/1000).toFixed(0)}к`} />
-            <Tooltip formatter={(value: any) => [`${(value ?? 0).toLocaleString('ru-RU')} ₽`, 'Выручка']}
+            <Tooltip formatter={(value: any) => [`${(value ?? 0).toLocaleString('ru-RU')} б.р.`, 'Выручка']}
                      contentStyle={{ borderRadius: 8, border: '1px solid #f1f5f9', fontSize: 12 }} />
             <Bar dataKey="revenue" fill="#f97316" radius={[6,6,0,0]} />
           </BarChart>

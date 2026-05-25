@@ -47,7 +47,7 @@ export default function Vehicles() {
           <p className="text-gray-500 text-sm mt-1">{vehicles.length} транспортных средств</p>
         </div>
         <button onClick={openCreate}
-          className="bg-brand-500 hover:bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          className="bg-brand-500 hover:bg-brand-600 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors">
           + Добавить автомобиль
         </button>
       </div>

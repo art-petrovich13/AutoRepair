@@ -93,7 +93,7 @@ export default function Orders() {
           <p className="text-gray-500 text-sm mt-1">{orders.length} заказов</p>
         </div>
         <button onClick={() => { setForm(emptyForm); setShowForm(true) }}
-          className="bg-brand-500 hover:bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          className="bg-brand-500 hover:bg-brand-600 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors">
           + Новый заказ
         </button>
       </div>
@@ -137,7 +137,7 @@ export default function Orders() {
                     {new Date(o.createdAt).toLocaleDateString('ru-RU')}
                   </td>
                   <td className="py-3 px-4 text-right font-medium text-gray-800">
-                    {o.totalAmount.toLocaleString('ru-RU')} ₽
+                    {o.totalAmount.toLocaleString('ru-RU')} б.р.
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex gap-1 justify-end">
@@ -200,7 +200,7 @@ export default function Orders() {
                 {services.filter(s => !form.services.find(x => x.serviceId === s.id)).map(s => (
                   <button key={s.id} onClick={() => addService(s)}
                     className="text-xs px-3 py-1.5 rounded-full border border-gray-200 hover:border-brand-500 hover:text-brand-600 transition-colors">
-                    + {s.name} ({s.price.toLocaleString('ru-RU')} ₽)
+                    + {s.name} ({s.price.toLocaleString('ru-RU')} б.р.)
                   </button>
                 ))}
               </div>
@@ -209,7 +209,7 @@ export default function Orders() {
                 return (
                   <div key={i} className="flex items-center gap-3 bg-gray-50 rounded-lg px-3 py-2 mb-2">
                     <span className="flex-1 text-sm text-gray-700">{svc?.name}</span>
-                    <span className="text-sm text-gray-500">{item.price.toLocaleString('ru-RU')} ₽</span>
+                    <span className="text-sm text-gray-500">{item.price.toLocaleString('ru-RU')} б.р.</span>
                     <button onClick={() => removeService(i)} className="text-red-400 hover:text-red-600 text-sm">✕</button>
                   </div>
                 )
@@ -228,7 +228,7 @@ export default function Orders() {
                     value={pt.name} onChange={e => updatePart(i, 'name', e.target.value)} />
                   <input type="number" placeholder="Кол." className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-500"
                     value={pt.quantity} onChange={e => updatePart(i, 'quantity', e.target.value)} />
-                  <input type="number" placeholder="Цена ₽" className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-500"
+                  <input type="number" placeholder="Цена б.р." className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-brand-500"
                     value={pt.unitPrice || ''} onChange={e => updatePart(i, 'unitPrice', e.target.value)} />
                   <button onClick={() => removePart(i)} className="text-red-400 hover:text-red-600 text-sm">✕</button>
                 </div>
@@ -236,14 +236,14 @@ export default function Orders() {
             </div>
 
             <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-              <span className="font-semibold text-gray-800">Итого: {total.toLocaleString('ru-RU')} ₽</span>
+              <span className="font-semibold text-gray-800">Итого: {total.toLocaleString('ru-RU')} б.р.</span>
               <div className="flex gap-3">
                 <button onClick={() => setShowForm(false)}
                   className="border border-gray-200 hover:bg-gray-50 text-gray-600 px-4 py-2 rounded-lg text-sm transition-colors">
                   Отмена
                 </button>
                 <button onClick={save}
-                  className="bg-brand-500 hover:bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                  className="bg-brand-500 hover:bg-brand-600 text-black px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                   Создать заказ
                 </button>
               </div>
@@ -273,7 +273,7 @@ export default function Orders() {
                 {detail.orderServices.map(s => (
                   <div key={s.id} className="flex justify-between text-sm py-1 border-b border-gray-50">
                     <span>{s.serviceName} × {s.quantity}</span>
-                    <span className="font-medium">{(s.price * s.quantity).toLocaleString('ru-RU')} ₽</span>
+                    <span className="font-medium">{(s.price * s.quantity).toLocaleString('ru-RU')} б.р.</span>
                   </div>
                 ))}
               </div>
@@ -284,14 +284,14 @@ export default function Orders() {
                 {detail.spareParts.map(p => (
                   <div key={p.id} className="flex justify-between text-sm py-1 border-b border-gray-50">
                     <span>{p.name} × {p.quantity}</span>
-                    <span className="font-medium">{(p.unitPrice * p.quantity).toLocaleString('ru-RU')} ₽</span>
+                    <span className="font-medium">{(p.unitPrice * p.quantity).toLocaleString('ru-RU')} б.р.</span>
                   </div>
                 ))}
               </div>
             )}
             <div className="flex justify-between items-center pt-2 border-t border-gray-200">
               <span className="text-gray-500 text-sm">Итого</span>
-              <span className="text-xl font-bold text-brand-600">{detail.totalAmount.toLocaleString('ru-RU')} ₽</span>
+              <span className="text-xl font-bold text-brand-600">{detail.totalAmount.toLocaleString('ru-RU')} б.р.</span>
             </div>
           </div>
         </div>

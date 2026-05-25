@@ -44,7 +44,7 @@ export default function Dashboard() {
         <StatCard label="Клиентов"         value={String(overview?.totalClients ?? '—')} icon="👥" />
         <StatCard
           label="Выручка (завершённые)"
-          value={overview ? `${overview.totalRevenue.toLocaleString('ru-RU')} ₽` : '—'}
+          value={overview ? `${overview.totalRevenue.toLocaleString('ru-RU')} б.р.` : '—'}
           icon="💰"
         />
       </div>
@@ -76,7 +76,7 @@ export default function Dashboard() {
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${s.cls}`}>{s.label}</span>
                     </td>
                     <td className="py-3 px-3 text-right font-medium text-gray-800">
-                      {order.totalAmount.toLocaleString('ru-RU')} ₽
+                      {order.totalAmount.toLocaleString('ru-RU')} б.р.
                     </td>
                   </tr>
                 )
